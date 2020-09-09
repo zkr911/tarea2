@@ -57,16 +57,10 @@ public class MainActivity extends AppCompatActivity {
 
                 if(i == R.id.btnsi){
                     ratingBar.setEnabled(true);
-                    btnvalorar.setEnabled(true);
+
                     cbxc.setEnabled(true);
                     cbtrail.setEnabled(true);
                     cbenduro.setEnabled(true);
-
-                    if(nombreok == true){
-
-                        btnvalorar.setEnabled(true);
-                    }
-
 
                 }else{
                     ratingBar.setRating(0); // resetear el ratingbar
@@ -80,10 +74,6 @@ public class MainActivity extends AppCompatActivity {
 
                     cbenduro.setEnabled(false);
                     cbenduro.setChecked(false);
-                    if(nombreok == true){
-                        btnvalorar.setEnabled(true);
-                    }
-
 
                 }
 
@@ -101,28 +91,36 @@ public class MainActivity extends AppCompatActivity {
 
             if(txtnombre.getText().length() <3 ){
                 txtnombre.setError("El nombre es muy corto");
-                return false;
+                btnvalorar.setEnabled(false);
+                if(txtnombre.getText().length() == 0){
+
+                    txtnombre.setError(null);
+                }
 
             }else{
 
                 nombreok = true;
-
+                btnvalorar.setEnabled(true);
             }
-
-
-
-
-
-
-
-
-
-
 
 
             return false;
         }
     });
+
+
+
+
+    btnvalorar.setOnKeyListener(new View.OnKeyListener() {
+        @Override
+        public boolean onKey(View view, int i, KeyEvent keyEvent) {
+            return false;
+        }
+    });
+
+
+
+
 
 
 
